@@ -1,0 +1,13 @@
+---
+version: '3'
+
+services:
+  couchdb-server:
+    image: couchdb
+    ports:
+      - "5984:5984"
+
+  couchdb-client:
+    image: couchdb
+    ports:
+      - "5985:5984"
