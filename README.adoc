@@ -1,0 +1,83 @@
+= Hello CouchDB
+
+This is a playground project to experiment with CouchDB using different technology.
+
+The eventual goal is to also play around with database replication.
+
+== API
+
+All services provide the same API regardless of their underlying technology and implementation:
+
+=== Store a Document in the respective CouchDB instance
+
+This endpoints allows for storing a simple document with a single field `name`.
+The service that receives a request will then add an `origin` field to indicate which service processed it, e.g.:
+
+* `spring`
+* `node`
+* `go`
+* `java`
+
+_However, some implementations have no type or document structure checking so that they also support storing other documents._
+
+==== Request
+
+----
+POST /people/add
+----
+
+[source,json]
+----
+{
+	"name": "John Doe"
+}
+----
+
+==== Response
+
+[source,json]
+----
+{
+    "_id": "1383e3d38dac71661b32271280003512",
+    "_rev": "1-59aff5d0ca6d0d21d5b2e583e29410ae",
+    "name": "John Doe",
+    "origin": "Go"
+}
+----
+
+=== Read all Documents from the respective CouchDB instance
+
+This endpoint returns all documents from the respective database of the service that service the request.
+The result may eventually also include data that was originally processed by another service and stored in another database.
+
+==== Request
+
+----
+GET /people
+----
+
+==== Response
+
+[source,json]
+----
+[
+    {
+        "_id": "1383e3d38dac71661b32271280003512",
+        "_rev": "1-59aff5d0ca6d0d21d5b2e583e29410ae",
+        "name": "John Doe",
+        "origin": "Go"
+    },
+    {
+        "_id": "1383e3d38dac71661b322712800036c1",
+        "_rev": "1-f5c637376ed761def564e9796e55586a",
+        "name": "Alice",
+        "origin": "Go"
+    },
+    {
+        "_id": "1383e3d38dac71661b322712800045ee",
+        "_rev": "1-128d838f46b1450ec45e177256717d45",
+        "name": "Bob",
+        "origin": "Go"
+    }
+]
+----
