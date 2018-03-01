@@ -16,3 +16,8 @@ services:
     image: couchdb
     ports:
       - "5986:5984"
+
+  couchdb-java:
+    image: couchdb
+    ports:
+      - "5987:5984"
