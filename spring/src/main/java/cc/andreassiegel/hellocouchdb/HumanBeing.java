@@ -15,4 +15,6 @@ public class HumanBeing {
   private String revision;
 
   private String name;
+
+  private String origin = "Spring";
 }
