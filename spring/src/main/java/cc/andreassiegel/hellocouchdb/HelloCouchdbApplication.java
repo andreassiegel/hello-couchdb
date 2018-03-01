@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class HelloCouchdbApplication {
+public class HelloCouchDbApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(HelloCouchdbApplication.class, args);
+    SpringApplication.run(HelloCouchDbApplication.class, args);
   }
 }
