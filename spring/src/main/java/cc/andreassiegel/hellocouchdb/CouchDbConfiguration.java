@@ -45,7 +45,7 @@ public class CouchDbConfiguration {
   public HttpClient couchDbHttpClient() {
     try {
       return new StdHttpClient.Builder()
-          .url(String.format("https://%s:%d", properties.getHost(), properties.getPort()))
+          .url(String.format("http://%s:%d", properties.getHost(), properties.getPort()))
           .build();
     } catch (MalformedURLException e) {
       throw new RuntimeException("Unable to read URL from CouchDB configuration", e);
