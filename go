@@ -1,1 +1,0 @@
-/Users/as/Documents/workspace/go/src/andreassiegel/hello-couchdb
