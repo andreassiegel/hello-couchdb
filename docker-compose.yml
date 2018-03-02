@@ -6,18 +6,26 @@ services:
     image: couchdb
     ports:
       - "5984:5984"
+    volumes:
+      - "./couchdb-config:/opt/couchdb/etc/local.d"
 
   couchdb-node:
     image: couchdb
     ports:
       - "5985:5984"
+    volumes:
+      - "./couchdb-config:/opt/couchdb/etc/local.d"
 
   couchdb-go:
     image: couchdb
     ports:
       - "5986:5984"
+    volumes:
+      - "./couchdb-config:/opt/couchdb/etc/local.d"
 
   couchdb-java:
     image: couchdb
     ports:
       - "5987:5984"
+    volumes:
+      - "./couchdb-config:/opt/couchdb/etc/local.d"
